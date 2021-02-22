@@ -29,7 +29,7 @@ const TodoListComponent = () => {
             <SearchTodosComponent />
           </div>
         </div>
-        <div className="row pt-2">
+        <div className="row pt-2 bg-white">
           <div className="col">
             <table className="table">
               <thead>
@@ -38,9 +38,11 @@ const TodoListComponent = () => {
                   <th scope="col">Название</th>
                 </tr>
               </thead>
-              {todos
-                .filter((todo) => todo.title.includes(searchingFilter) && todo.completed.toString().includes(completedFilter))
-                .map((todo) => <TodoComponent key={todo.id} todo={todo} />)}
+                {todos
+                  .filter((todo) => todo.title
+                  .includes(searchingFilter) && todo.completed.toString()
+                  .includes(completedFilter))
+                  .map((todo) => <TodoComponent key={todo.id} todo={todo} />)}
             </table>
           </div>
         </div>
