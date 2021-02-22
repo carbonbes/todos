@@ -36,14 +36,14 @@ const todosReducer = (state = initialState, action) => {
       };
 
     case SEARCH_BY_TODONAME:
-      const searchNameTodos = action.payload.toLowerCase();
+      const searchNameTodos = action.payload;
       return {
         ...state,
         searchFilter: searchNameTodos,
       };
 
     case SEARCH_BY_COMPLETED:
-      const selectedSorting = action.payload.toString();
+      const selectedSorting = action.payload;
       return {
         ...state,
         completedFilter: selectedSorting,
