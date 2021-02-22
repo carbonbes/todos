@@ -5,10 +5,10 @@ import {
   SEARCH_BY_TODONAME,
   SEARCH_BY_COMPLETED,
 } from "../actions/actionTypes";
+import { searchByTodoName } from "../actions/searchActions";
 
 const initialState = {
   todos: [],
-  foundTodos: [],
   searchFilter: '',
   completedFilter: '',
   isFetching: false,
@@ -36,13 +36,10 @@ const todosReducer = (state = initialState, action) => {
       };
 
     case SEARCH_BY_TODONAME:
-      state.searchFilter = action.payload.toLowerCase();
-      const foundTodos = state.todos.filter((todo) => {
-        return todo.title.toLowerCase().includes(state.searchFilter);
-      });
+      const searchNameTodos = action.payload.toLowerCase();
       return {
         ...state,
-        foundTodos: foundTodos,
+        searchFilter: searchNameTodos,
       };
 
     case SEARCH_BY_COMPLETED:

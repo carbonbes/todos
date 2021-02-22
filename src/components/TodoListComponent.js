@@ -13,8 +13,9 @@ const TodoListComponent = () => {
     dispatch(requestTodo());
   }, []);
 
+  const todos = useSelector((state) => state.todos);
+  const searchingFilter = useSelector((state) => state.searchFilter);
   const completedStatus = useSelector((state) => state.completedFilter.toString());
-  const todos = useSelector((state) => state.foundTodos.length ? state.foundTodos : state.todos);
 
   return (
     todos.length ? (
@@ -37,7 +38,7 @@ const TodoListComponent = () => {
                 </tr>
               </thead>
               {todos
-                .filter((todo) => todo.completed.toString() == completedStatus || completedStatus == '')
+                .filter((todo) => todo.title.includes(searchingFilter) && todo.completed.toString().includes(completedStatus))
                 .map((todo) => <TodoComponent key={todo.id} todo={todo} />)}
             </table>
           </div>
