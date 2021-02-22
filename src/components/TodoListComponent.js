@@ -15,20 +15,21 @@ const TodoListComponent = () => {
 
   const todos = useSelector((state) => state.todos);
   const searchingFilter = useSelector((state) => state.searchFilter);
-  const completedStatus = useSelector((state) => state.completedFilter.toString());
+  const completedFilter = useSelector((state) => state.completedFilter.toString());
 
   return (
     todos.length ? (
       <>
-        <div className="row">
-          <div className="col">
+        <div className="row p-3 px-0 pb-0 bg-white sticky-top shadow-sm">
+          <h1 className='fw-bold'>Мои задачи</h1>
+          <div className="col pt-2">
             <SortingTodosComponent />
           </div>
-          <div className="col">
+          <div className="col pt-2">
             <SearchTodosComponent />
           </div>
         </div>
-        <div className="row">
+        <div className="row pt-2">
           <div className="col">
             <table className="table">
               <thead>
@@ -38,7 +39,7 @@ const TodoListComponent = () => {
                 </tr>
               </thead>
               {todos
-                .filter((todo) => todo.title.includes(searchingFilter) && todo.completed.toString().includes(completedStatus))
+                .filter((todo) => todo.title.includes(searchingFilter) && todo.completed.toString().includes(completedFilter))
                 .map((todo) => <TodoComponent key={todo.id} todo={todo} />)}
             </table>
           </div>
