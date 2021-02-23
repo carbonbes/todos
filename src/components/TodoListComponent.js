@@ -40,7 +40,7 @@ const TodoListComponent = () => {
               </thead>
                 {todos
                   .filter((todo) => todo.title
-                  .includes(searchingFilter.toLowerCase()) && todo.completed
+                  .includes(searchingFilter.toLowerCase()) && todo.completed.toString()
                   .includes(completedFilter))
                   .map((todo) => <TodoComponent key={todo.id} todo={todo} />)}
             </table>
