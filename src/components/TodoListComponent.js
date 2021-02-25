@@ -12,11 +12,9 @@ const TodoListComponent = () => {
     dispatch(requestTodo());
   }, []);
 
-  const todos = useSelector((state) => state.todos);
-  const searchingFilter = useSelector((state) => state.searchFilter);
-  const completedFilter = useSelector((state) =>
-    state.completedFilter.toString()
-  );
+  const todos = useSelector((state) => state.todosReducer.todos);
+  const searchingFilter = useSelector((state) => state.searchSortingReducer.searchFilter);
+  const completedFilter = useSelector((state) => state.searchSortingReducer.completedFilter.toString());
 
   return (
     <>

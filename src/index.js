@@ -2,35 +2,31 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { createStore, compose, applyMiddleware, combineReducers } from "redux";
-import logger from 'redux-logger';
-import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
-import todosReducer from "./reducers/todosReducer";
+import rootReducer from "./reducers";
+import { createStore, compose, applyMiddleware } from "redux";
 import { getTodosWatcher } from "./sagas/sagas";
+import { Provider } from "react-redux";
+import logger from "redux-logger";
 
 const sagaMiddleware = createSagaMiddleware();
 
-const rootReducer = combineReducers(
-  todosReducer,
-);
-
 const store = createStore(
-  todosReducer,
+  rootReducer,
   compose(
     applyMiddleware(sagaMiddleware, logger),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.navigator.userAgent.includes('Chrome')
+      ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+      : compose
   )
 );
 
 sagaMiddleware.run(getTodosWatcher);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById("root")
 );
 

@@ -13,7 +13,7 @@ const SortingTodosComponent = () => {
         dispatch(searchByCompleted(e.target.value));
       }}
     >
-      <option selected value="">Все</option>
+      <option defaultValue value="">Все</option>
       <option value="true">Выполненные</option>
       <option value="false">Невыполненные</option>
     </select>
