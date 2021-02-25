@@ -15,7 +15,7 @@ const store = createStore(
   rootReducer,
   compose(
     applyMiddleware(sagaMiddleware, logger),
-    window.navigator.userAgent.includes('Chrome')
+    window.navigator.userAgent.includes("Chrome")
       ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
       : compose
   )
@@ -24,9 +24,11 @@ const store = createStore(
 sagaMiddleware.run(getTodosWatcher);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
   document.getElementById("root")
 );
 
