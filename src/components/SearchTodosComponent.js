@@ -9,7 +9,7 @@ const SearchTodosComponent = () => {
     <input
       type="text"
       className="form-control"
-      placeholder="Поиск по названию"
+      placeholder="Поиск"
       aria-label="Username"
       aria-describedby="basic-addon1"
       onChange={(e) => {

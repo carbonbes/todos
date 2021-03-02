@@ -1,6 +1,6 @@
 import TodoListComponent from "./components/TodoListComponent";
+import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min";
 import "./styles/style.scss";
-// import "../node_modules/@popperjs/core/dist/umd/popper.min.js"
 
 function App() {
   return (
