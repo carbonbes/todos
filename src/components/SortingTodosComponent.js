@@ -7,7 +7,7 @@ const SortingTodosComponent = () => {
 
   return (
     <select
-      className="form-select mb-3"
+      className="form-select"
       aria-label="Default select example"
       onChange={(e) => {
         dispatch(searchByCompleted(e.target.value));
