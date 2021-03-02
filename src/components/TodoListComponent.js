@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { requestTodo } from "../actions/todoActions";
-import SortingTodosComponent from "./SortingTodosComponent";
-import SearchTodosComponent from "./SearchTodosComponent";
 import TodoComponent from "./TodoComponent";
+import SortingListCollapseComponent from "./SortingListCollapseComponent";
 
 const TodoListComponent = () => {
   const dispatch = useDispatch();
@@ -18,14 +17,8 @@ const TodoListComponent = () => {
 
   return (
     <>
-      <div className="row p-3 px-0 pb-0 bg-white sticky-top shadow-sm">
-        <h1 className="fw-bold">Мои задачи</h1>
-        <div className="col pt-2">
-          <SortingTodosComponent />
-        </div>
-        <div className="col pt-2">
-          <SearchTodosComponent />
-        </div>
+      <div className="row p-3 px-0 pb-2 bg-white sticky-top shadow-sm">
+        <SortingListCollapseComponent />
       </div>
       <div className="row pt-2 bg-white">
         <div className="col">
