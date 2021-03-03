@@ -4,7 +4,7 @@ import { failedTodo, successTodo } from '../actions/todoActions';
 
 function* getTodos() {
   try {
-    const todos = yield call(() => fetch('https://jsonplaceholder.typicode.com/todos').then(res => res.json()));
+    const todos = yield call(() => fetch('https://jsonplaceholder.typicode.com/todos?_limit=10').then(res => res.json()));
     yield put(successTodo(todos));
   } catch(e) {
     yield put(failedTodo(e));
